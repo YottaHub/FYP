@@ -21,47 +21,47 @@
 class project(object):
 	def __init__(self, directory, period, region, outfolder):
 	'''项目初始化
-    param: directory <数据库地址>>, str
+    	param: directory <数据库地址>>, str
     	   eg:'D:\\database' or 'd:\database'
-    param: period <研究时间>, list
+    	param: period <研究时间>, list
     	   eg. [2008, 2018] NOTES:表示2008-2018年这一区间
-    param: region <研究区域>, list
+    	param: region <研究区域>, list
     	   eg. ['北京', '天津', '河北', '山西', '内蒙古']
-    param: outfolder <项目地址>, str
+    	param: outfolder <项目地址>, str
     	   eg. 'C:\\document\\MyProject', NOTES:'MyProject'将被视为项目名
-    param: classification <分类文件地址>, str
+    	param: classification <分类文件地址>, str
     	   eg.'C:\\document\\MyProject\\classification.txt'
 	'''
     
-    def selfcheck(self):
-    '''核实项目状态
-    ----------------------------------------------------------------
-    param	: null
-    desc	: 检查项目进度，项目初始化时会自动执行一次;selfcheck与cp.json捆
+   	def selfcheck(self):
+    	'''核实项目状态
+    	----------------------------------------------------------------
+    	param	: null
+    	desc	: 检查项目进度，项目初始化时会自动执行一次;selfcheck与cp.json捆
     		  绑，请不要擅自移动与修改cp.json文件;
-    NOTES	: 暂不支持热插拔
-    ----------------------------------------------------------------
-    OUT		: 打印'项目当前状态:'
+   	NOTES	: 暂不支持热插拔
+    	----------------------------------------------------------------
+    	OUT	: 打印'项目当前状态:'
     		eg: {'项目名称': 'MyTrial',
- 				'保存位置': 'E:\\FYP',
- 				'创建时间': '2021年06月13日 14:13:23',
- 				'数据库地址': 'E:\\database',
- 				'研究时间': '2018年',
- 				'研究区域': ['辽宁', '吉林', '黑龙江'],
- 				'项目进度': 'E:\\database\\csv_data\\辽宁\\2018.csv',
-				'修改时间': '2021年06月13日 15:15:09',
- 				'分类结果': 'E:\\FYP\\MyTrial\\classification.txt',
- 				'输出类型': {'法人单位': 'y', '所有制类型': 'f'}}
-    '''
+ 		     '保存位置': 'E:\\FYP',
+ 		     '创建时间': '2021年06月13日 14:13:23',
+ 		     '数据库地址': 'E:\\database',
+ 		     '研究时间': '2018年',
+ 		     '研究区域': ['辽宁', '吉林', '黑龙江'],
+ 		     '项目进度': 'E:\\database\\csv_data\\辽宁\\2018.csv',
+		     '修改时间': '2021年06月13日 15:15:09',
+ 		     '分类结果': 'E:\\FYP\\MyTrial\\classification.txt',
+ 		     '输出类型': {'法人单位': 'y', '所有制类型': 'f'}}
+    	'''
 	def run(self, loss_rate=1):
-    '''运行项目
-    ----------------------------------------------------------------
-    param	: loss_rate, optional, float	default: loss_rate=1
-    desc	: 如果需要区分法人单位和所有制类型，先进行分类；默认先提取经纬度，
+    	'''运行项目
+    	----------------------------------------------------------------
+    	param	: loss_rate, optional, float	default: loss_rate=1
+    	desc	: 如果需要区分法人单位和所有制类型，先进行分类；默认先提取经纬度，
     		  获得每个新企业的点坐标，若某省数据缺失率超过给定loss_rate，根据
     		  'city'栏获取企业所在城市(数据缺失少，但潜在错误多)
-    ----------------------------------------------------------------
-    OUT		: a. 如果尚未进行分类, generate '\classification.txt', 文本
+    	----------------------------------------------------------------
+    	OUT	: a. 如果尚未进行分类, generate '\classification.txt', 文本
     		  文档包含enterprise_type, entity, ownership, sum 三列, 分
     		  别为数据库中企业类型, 是否为法人单位(y: 企业法人, n: 非法人单位
     		  , u: 不确定), 所有制类型(p: 私营企业, f: 外资企业,s: 国有企业
@@ -74,44 +74,44 @@ class project(object):
     		  c. generate '{year}\report_{year}.xslx', 工作表"输出结果"
     		  包含提取省份, 缺失率, 提取有效值, 额外工作表"{province}"为缺失
     		  率较高省份,根据'city'列提取的有效新创企业数以及该省该方法缺失率.
-    '''
+    	'''
 	def classifer(self):
-    '''识别是否为法人单位与所有制类型
-    ----------------------------------------------------------------
-    OUT		: generate '\classification.txt'
-    '''
-    @property
-    def directory(self):
+    	'''识别是否为法人单位与所有制类型
+    	----------------------------------------------------------------
+    	OUT	: generate '\classification.txt'
+    	'''
+    	@property
+    	def directory(self):
 
-    @directory.setter
-    def directory(self, directory):
+    	@directory.setter
+    	def directory(self, directory):
 
-    @property
-    def period(self):
+    	@property
+    	def period(self):
 
-    @period.setter
-    def period(self, period):
+    	@period.setter
+    	def period(self, period):
 
-    @property
-    def region(self):
+    	@property
+    	def region(self):
 
-    @region.setter
-    def region(self, region):
+    	@region.setter
+    	def region(self, region):
 
-    @property
-    def outfolder(self):
+    	@property
+    	def outfolder(self):
 
-    @outfolder.setter
-    def outfolder(self, outfolder):
+    	@outfolder.setter
+    	def outfolder(self, outfolder):
 
-    @property
-    def classification(self):
+    	@property
+    	def classification(self):
 
-    @classification.setter
-    def classification(self, classification):
-    '''
-    param: classification, str	eg. 'E:\\FYP\\MyTrial\\classification.txt'
-    '''
+    	@classification.setter
+    	def classification(self, classification):
+    	'''
+    	param: classification, str	eg. 'E:\\FYP\\MyTrial\\classification.txt'
+    	'''
 ```
 
 #### *2.2.2 Modules*

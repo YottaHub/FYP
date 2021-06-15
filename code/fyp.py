@@ -1,3 +1,9 @@
+'''
+作者: Yottahub
+简介: 本脚本可用于操作工商局企业登记注册数据，用途仅限于科学研究。
+'''
+
+
 import os
 import time
 import json

@@ -1,6 +1,6 @@
 # FYP
 ## 1 Introduction
-本仓库作为作者本科毕业论文——**《新创企业的空间分布特征及其驱动因子探究》**内容与数据共享平台, fyp即 Final-Year Paper 的缩写。如果您具有**工商局企业注册数据库**，那么您可以使用本仓库`\code`文件夹中代码完成数据获取内容并用于科学研究，包括且不限于**1979-2018年**最小至**县级单元**的**区分企业法人单位与所有制类型**的新创企业成立数(某些年份某些省份因为经纬度数据**缺失较多**仅能通过其他方法获取并精确到地级市层面，这一部分数据会在代码运行中**声明**)。如果您没有该数据库, 但是出于**科学研究目的**想要对此题目有所了解，可以在文档最后的链接中下载本文所用数据，文责自负。
+本仓库作为作者本科毕业论文——**《新创企业的空间分布特征及其驱动因子探究》** 内容与数据共享平台, fyp即 Final-Year Paper 的缩写。如果您具有 **工商局企业注册数据库**，那么您可以使用本仓库`\code`文件夹中代码完成数据获取内容并用于科学研究，包括且不限于**1979-2018年**最小至**县级单元**的**区分企业法人单位与所有制类型**的新创企业成立数(某些年份某些省份因为经纬度数据**缺失较多**仅能通过其他方法获取并精确到地级市层面，这一部分数据会在代码运行中**声明**)。如果您没有该数据库, 但是出于**科学研究目的**想要对此题目有所了解，可以在文档最后的链接中下载本文所用数据，文责自负。
 
 ## 2 Usage
 
@@ -12,7 +12,7 @@
 #### *2.1.2 预装库*
 
 `os`  `time`  `json`  `pandas`  `numpy`  `tqdm`  `xlsxwriter`
-####  2.2 功能介绍
+###  2.2 功能介绍
 **Version: Python 3.8**
 
 #### *2.2.1 Class*
@@ -21,47 +21,47 @@
 class project(object):
 	def __init__(self, directory, period, region, outfolder):
 	'''项目初始化
-    param: directory <数据库地址>>, str
+    	param: directory <数据库地址>>, str
     	   eg:'D:\\database' or 'd:\database'
-    param: period <研究时间>, list
+    	param: period <研究时间>, list
     	   eg. [2008, 2018] NOTES:表示2008-2018年这一区间
-    param: region <研究区域>, list
+    	param: region <研究区域>, list
     	   eg. ['北京', '天津', '河北', '山西', '内蒙古']
-    param: outfolder <项目地址>, str
+    	param: outfolder <项目地址>, str
     	   eg. 'C:\\document\\MyProject', NOTES:'MyProject'将被视为项目名
-    param: classification <分类文件地址>, str
+    	param: classification <分类文件地址>, str
     	   eg.'C:\\document\\MyProject\\classification.txt'
 	'''
     
-    def selfcheck(self):
-    '''核实项目状态
-    ----------------------------------------------------------------
-    param	: null
-    desc	: 检查项目进度，项目初始化时会自动执行一次;selfcheck与cp.json捆
+   	def selfcheck(self):
+    	'''核实项目状态
+    	----------------------------------------------------------------
+    	param	: null
+    	desc	: 检查项目进度，项目初始化时会自动执行一次;selfcheck与cp.json捆
     		  绑，请不要擅自移动与修改cp.json文件;
-    NOTES	: 暂不支持热插拔
-    ----------------------------------------------------------------
-    OUT		: 打印'项目当前状态:'
+   	NOTES	: 暂不支持热插拔
+    	----------------------------------------------------------------
+    	OUT	: 打印'项目当前状态:'
     		eg: {'项目名称': 'MyTrial',
- 				'保存位置': 'E:\\FYP',
- 				'创建时间': '2021年06月13日 14:13:23',
- 				'数据库地址': 'E:\\database',
- 				'研究时间': '2018年',
- 				'研究区域': ['辽宁', '吉林', '黑龙江'],
- 				'项目进度': 'E:\\database\\csv_data\\辽宁\\2018.csv',
-				'修改时间': '2021年06月13日 15:15:09',
- 				'分类结果': 'E:\\FYP\\MyTrial\\classification.txt',
- 				'输出类型': {'法人单位': 'y', '所有制类型': 'f'}}
-    '''
+ 		     '保存位置': 'E:\\FYP',
+ 		     '创建时间': '2021年06月13日 14:13:23',
+ 		     '数据库地址': 'E:\\database',
+ 		     '研究时间': '2018年',
+ 		     '研究区域': ['辽宁', '吉林', '黑龙江'],
+ 		     '项目进度': 'E:\\database\\csv_data\\辽宁\\2018.csv',
+		     '修改时间': '2021年06月13日 15:15:09',
+ 		     '分类结果': 'E:\\FYP\\MyTrial\\classification.txt',
+ 		     '输出类型': {'法人单位': 'y', '所有制类型': 'f'}}
+    	'''
 	def run(self, loss_rate=1):
-    '''运行项目
-    ----------------------------------------------------------------
-    param	: loss_rate, optional, float	default: loss_rate=1
-    desc	: 如果需要区分法人单位和所有制类型，先进行分类；默认先提取经纬度，
+    	'''运行项目
+    	----------------------------------------------------------------
+    	param	: loss_rate, optional, float	default: loss_rate=1
+    	desc	: 如果需要区分法人单位和所有制类型，先进行分类；默认先提取经纬度，
     		  获得每个新企业的点坐标，若某省数据缺失率超过给定loss_rate，根据
     		  'city'栏获取企业所在城市(数据缺失少，但潜在错误多)
-    ----------------------------------------------------------------
-    OUT		: a. 如果尚未进行分类, generate '\classification.txt', 文本
+    	----------------------------------------------------------------
+    	OUT	: a. 如果尚未进行分类, generate '\classification.txt', 文本
     		  文档包含enterprise_type, entity, ownership, sum 三列, 分
     		  别为数据库中企业类型, 是否为法人单位(y: 企业法人, n: 非法人单位
     		  , u: 不确定), 所有制类型(p: 私营企业, f: 外资企业,s: 国有企业
@@ -74,44 +74,44 @@ class project(object):
     		  c. generate '{year}\report_{year}.xslx', 工作表"输出结果"
     		  包含提取省份, 缺失率, 提取有效值, 额外工作表"{province}"为缺失
     		  率较高省份,根据'city'列提取的有效新创企业数以及该省该方法缺失率.
-    '''
+    	'''
 	def classifer(self):
-    '''识别是否为法人单位与所有制类型
-    ----------------------------------------------------------------
-    OUT		: generate '\classification.txt'
-    '''
-    @property
-    def directory(self):
+    	'''识别是否为法人单位与所有制类型
+    	----------------------------------------------------------------
+    	OUT	: generate '\classification.txt'
+    	'''
+    	@property
+    	def directory(self):
 
-    @directory.setter
-    def directory(self, directory):
+    	@directory.setter
+    	def directory(self, directory):
 
-    @property
-    def period(self):
+    	@property
+    	def period(self):
 
-    @period.setter
-    def period(self, period):
+    	@period.setter
+    	def period(self, period):
 
-    @property
-    def region(self):
+    	@property
+    	def region(self):
 
-    @region.setter
-    def region(self, region):
+    	@region.setter
+    	def region(self, region):
 
-    @property
-    def outfolder(self):
+    	@property
+    	def outfolder(self):
 
-    @outfolder.setter
-    def outfolder(self, outfolder):
+    	@outfolder.setter
+    	def outfolder(self, outfolder):
 
-    @property
-    def classification(self):
+    	@property
+    	def classification(self):
 
-    @classification.setter
-    def classification(self, classification):
-    '''
-    param: classification, str	eg. 'E:\\FYP\\MyTrial\\classification.txt'
-    '''
+    	@classification.setter
+    	def classification(self, classification):
+    	'''
+    	param: classification, str	eg. 'E:\\FYP\\MyTrial\\classification.txt'
+    	'''
 ```
 
 #### *2.2.2 Modules*
@@ -147,7 +147,7 @@ def main():
 ## 3 License
 > MIT License
 
-项目中代码并不是从网上随意复制粘贴的产品，而是根据数据库真实情况原创编写并不断调试得到的。因此如需引用或修改本仓库内容, 请署名并以相同方式共享, 谢谢！
+项目中代码并不是从网上随意复制粘贴得到，而是根据数据库真实情况原创编写并不断调试的成果。因此，如需引用或修改本仓库内容, 请署名并以相同方式共享, 谢谢！
 
 ## 4 Others
 

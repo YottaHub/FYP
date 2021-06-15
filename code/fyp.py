@@ -1,3 +1,10 @@
+'''
+拥有者: Yottas
+仓库地址: https://github.com/yottahub/fyp.git
+原创声明: 代码与所得数据仅供科学研究使用, 文责自负；如需引用或者修改本代码，请署名或保留本段注释.
+'''
+
+
 import os
 import time
 import json
@@ -495,11 +502,11 @@ class project(object):
         self._outfolder = outfolder
 
     @property
-    def classication(self):
+    def classification(self):
         return self._classification
 
-    @classication.setter
-    def classication(self, classification):
+    @classification.setter
+    def classification(self, classification):
         self._classification = classification
         self.new_cp()
 
